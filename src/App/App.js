@@ -13,6 +13,7 @@ import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
 import config from '../config';
 import NotefulContext from '../context';
+import HandleError from '../HandleError';
 require('dotenv').config();
 
 class App extends Component {
@@ -84,7 +85,8 @@ class App extends Component {
   deleteNote = (id) =>{
     let newNotes=this.state.notes.filter(n=>n.id !== id);
     this.setState({
-      notes: newNotes
+      notes: newNotes,
+      folders: this.state.folders
     })
   }
 
@@ -107,6 +109,7 @@ class App extends Component {
   renderNavRoutes() {
     const { notes, folders } = this.state
     return (
+      <HandleError>
       <>
         {['/', '/folder/:folderId'].map(path =>
           <Route
@@ -145,12 +148,14 @@ class App extends Component {
           component={NotePageNav}
         />
       </>
+      </HandleError>
     )
   }
 
   renderMainRoutes() {
     const { notes, folders } = this.state
     return (
+      <HandleError>
       <>
         {['/', '/folder/:folderId'].map(path =>
           <Route
@@ -211,6 +216,7 @@ class App extends Component {
           }}
         />
       </>
+      </HandleError>
     )
   }
 
@@ -224,6 +230,7 @@ class App extends Component {
       updateNote: this.updateNote
     };
     return (
+      <HandleError>
       <div className='App'>
         <NotefulContext.Provider value={contextValue}>
         <nav className='App__nav'>
@@ -241,6 +248,7 @@ class App extends Component {
         </main>
         </NotefulContext.Provider>  
       </div>
+      </HandleError>
     )
   }
 }

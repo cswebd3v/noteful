@@ -30,7 +30,7 @@ export default class AddNote extends Component {
     const newNote={
       name: this.state.name,
       content: this.state.content,
-      folderid: this.state.folderId,
+      folderId: this.state.folderId,
       modified: new Date(),
     };
     fetch(`${config.API_ENDPOINT}/notes`,{

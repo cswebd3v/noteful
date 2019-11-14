@@ -12,7 +12,7 @@ export default class Note extends Component {
   
   deleteNoteRequest =(id) => {
     console.log(this.props)
-    fetch(`${config.API_ENDPOINT}/note/${id}`,{
+    fetch(`${config.API_ENDPOINT}/notes/${id}`,{
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
