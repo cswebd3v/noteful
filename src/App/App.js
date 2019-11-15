@@ -91,12 +91,12 @@ class App extends Component {
   }
 
   updateNote = (note) =>{
-    let newNote=this.state.notes.find(n=> n.id == note.id)
+    let newNote=this.state.notes.find(n=> n.id === note.id)
     newNote.name=note.name
     newNote.content=note.content
     const stateCopy = [...this.state.notes]
     for (let i=0; i<stateCopy.length; i++){
-      if(stateCopy[i].id == note.id) {
+      if(stateCopy[i].id === note.id) {
         stateCopy[i] = newNote;
       }
     }

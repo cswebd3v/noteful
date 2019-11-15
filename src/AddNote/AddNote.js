@@ -62,20 +62,20 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' onChange={(e)=> this.setName(e.target.value)}/>
+            <input type='text' id='note-name-input' required onChange={(e)=> this.setName(e.target.value)}/>
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <input type='text' id='note-content-input' onChange={(e)=> this.setContent(e.target.value)} />
+            <input type='text' id='note-content-input' required onChange={(e)=> this.setContent(e.target.value)} />
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
               Folder
             </label>
-            <select id='note-folder-select' onChange={(e)=> this.chooseId(e.target.value)}>
-              <option value={null}>...</option>
+            <select required id='note-folder-select' onChange={(e)=> this.chooseId(e.target.value)}>
+              <option value={''}>...</option>
               {folders.map(folder =>
                 <option key={folder.id} value={folder.id}>
                   {folder.name}
